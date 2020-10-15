@@ -1,0 +1,185 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+<metacharset="UTF-8">
+<metaname="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>惠聚中行日</title>
+<scripttype="text/javascript" src="tcodewebNew/js/rem_control.js"></script>
+<!--<scripttype="text/javascript"src="tcodewebNew/js/td-h5-website-sdk.js"td-appid="7CD2CB744F9CC31FA9737E2E74B3A3C7"></script>-->
+<linkrel="stylesheet" href="tcodewebNew/css/reset.css"/>
+<linkrel="stylesheet" href="tcodewebNew/css/style.css"/>
+
+<style>
+.class1{
+    
+border: 1pxsolidred;
+}
+</style>
+<script type="text/javascript">
+/*埋点mpf*/
+/*varburyingPoint=;
+varfromPb=;
+$("#exchane-all-btn").click(function(event){
+    
+if(buryingPoint!="0"&&fromPb=="5"){
+        
+TDAPP.onEvent(buryingPoint,
+        "优惠商户下一步");
+    }
+});*/
+</script>
+</head>
+<body ontouchstart="" onmouseover="">
+<div class="page-header">
+<a class="header-left"></a>
+<p>订单确认</p>
+</div>
+<!--惠聚天下-优惠券兑换-->
+<div class="page-wrapper">
+<div class="exchage-credit">
+<div class="choose-num">
+<label>请选择数量</label>
+<div>
+<button class="decrease" id="decrease" onclick="decreaseOne()">-</button>
+<input type="tel" name="num" id="num" min="0" value="1" oninput="format();"/>
+<button class="increase" id="increase" onclick="increaseOne()">+</button>
+</div>
+</div>
+
+
+
+<!--积分-->
+<div>
+<label>价值</label>
+<span>
+<label class="red-style" id="loytLabel">16457</label>
+<label>分</label>
+</span>
+</div>
+
+
+
+
+<div class="exchange-description">
+
+<p>请选择支付卡号</p>
+</div>
+<span id="selJsonLM" style="display:none;">[
+    {
+        "cardNo1": "afb19cfc3b714a81b4cbf1ec1ec98241",
+        "cardNo": "625906 **** **** 4812",
+        "cardType": "C"
+    }
+]</span>
+<select class="select-card" id="selectCard" onchange="selectedCard()">
+<!--加载数据-->
+</select>
+
+<!--P2003-->
+
+
+<button class="forms-btn long-btn"id="exchane-all-btn">下一步</button>
+</div>
+</div>
+<input type="hidden" value='16457' id="singelLoyt"/>
+<input type="hidden" value='0' id="singlePrice"/>
+<input type="hidden" value='WZLXF00077975961478' id="couponId"/>
+<input type="hidden" value='2' id="couponType"/>
+<input type="hidden" value='1' id="maxBuyNumber"/>
+<input type="hidden" value='' id="ratio"/>
+<input type="hidden" value='' id="minAccumPoints"/>
+<input type="hidden" value='' id="maxAccumPoints"/>
+<input type="hidden" value='0' id="singlePriceChange"/>
+<input type="hidden" value='16457' id="singelLoytChange"/>
+<input type="hidden" value='' id="brandNo"/>
+<input type="hidden" id="totalLoyt"/>
+<input type="hidden" id="totalPrice"/>
+
+<!--2003新增-->
+<input type="hidden" value='500' id="minPeridsPrice"/>
+<input type="hidden" name="check" id="check" value="0"/>
+<!--分期计划-->
+<input type="hidden" id="periods" value="0"/>
+<!--期数-->
+<input type="hidden" id="isPeriods" value="0"/>
+<input type="hidden" id="periodsNum" value="0"/>
+<input type="hidden" id="firstMoney" value="0"/>
+<input type="hidden" id="periodsMoney" value="0"/>
+<!--上一次输入已算的分期金额-->
+<input type="hidden" id="olderPrice" value="0"/>
+</body>
+<script type="text/javascript" src="tcodewebNew/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="tcodewebNew/js/validate.js"></script>
+<!--<scripttype="text/javascript"src="../js/collect.js"></script>-->
+<script type="text/javascript" src="tcodewebNew/js/link.js"></script>
+<script type="text/javascript" src="tcodewebNew/js/plan.js"></script>
+<script type="text/javascript">
+<!--
+$(function(){
+    
+exchangePageInit();
+
+//获取下拉框json对象
+$("#selectCard").children().remove();
+var jsList=JSON.parse($("#selJsonLM").html());
+var str="";
+for(var i=0;i<jsList.length;i++){
+        
+if(jsList[
+            i
+        ].cardType=="C"){
+            
+str+="<option value='C"+jsList[
+                i
+            ].cardNo1+"'>信用卡  "+jsList[
+                i
+            ].cardNo+"</option>";
+        }else{
+            
+str+="<option value='D"+jsList[
+                i
+            ].cardNo1+"'>借记卡  "+jsList[
+                i
+            ].cardNo+"</option>";
+        }
+    }
+$("#selectCard").append(str);
+
+//P2003新增
+var cardType=$("#selectCard").val().substring(0,
+    1);
+if(cardType=="C"){
+        
+$(".periodsClass").show();
+    }else{
+        
+$(".periodsClass").hide();
+$("#check").attr("value",
+        "0");
+    }
+var money=$("#singlePrice").val();
+var minPeridsPrice=$("#minPeridsPrice").val();
+if(minPeridsPrice*1>money*1){
+        
+$("#img").removeAttr("onclick");
+    }
+
+});
+//-->
+function selectedCard(){
+    
+var cardType=$("#selectCard").val().substring(0,
+    1);
+if(cardType=="C"){
+        
+$(".periodsClass").show();
+    }else{
+        
+$(".periodsClass").hide();
+$("#check").attr("value",
+        "0");
+    }
+
+}
+</script>
+</html>
